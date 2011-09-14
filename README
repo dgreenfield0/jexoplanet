@@ -1,1 +1,11 @@
-READ ME JEXOPLANET
+READ ME: JEXOPLANET is a Java client for NStED (The NASA Star and Exoplanet Database (NStED)) API.  
+
+From NStED site;
+The NASA Star and Exoplanet Database (NStED) collects and serves public data to support the search for and characterization of 
+extra-solar planets (exoplanets) and their host stars. 
+The data include published light curves, images, spectra and parameters, and time-series data from surveys that aim to discover transiting exoplanets. 
+All data are validated by the NStED science staff and traced to their sources. NStED is the U.S. data portal for the CoRoT mission.
+
+This goal of JExoplant is to provide a clran java interface to make it easier to get and consume the Exoplanet data.  
+
+...and, I'm writing an app that'll use this, so might as well share the client.
