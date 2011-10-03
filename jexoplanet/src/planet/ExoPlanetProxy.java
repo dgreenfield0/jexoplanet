@@ -22,8 +22,8 @@ public class ExoPlanetProxy {
 		String exoPlanetCount = test.getPlanetCount();
 		System.out.println("********************\nExoPlanet count: "+exoPlanetCount+"\n********************");
 		
-		String StarCount = test.getPlanetHostingStarCount();
-		System.out.println("********************\nPlanet Hosting Stars count: "+StarCount+"\n********************");
+//		String StarCount = test.getPlanetHostingStarCount();
+//		System.out.println("********************\nPlanet Hosting Stars count: "+StarCount+"\n********************");
 
 	}
 	
