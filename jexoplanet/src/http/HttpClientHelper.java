@@ -3,6 +3,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+//import org.apache.commons.
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * Basic http helper class
@@ -13,29 +21,24 @@ public class HttpClientHelper {
 
 	public static void main(String[] args) throws Exception {	
 		HttpClientHelper test = new HttpClientHelper();
-		test.HTTP_GET("http://www.google.com/");
+		test.HTTP_GET("http://nsted.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=st_d24_plnt&select=plnthostname&format=xml");
 	}
 	
 	public String HTTP_GET (String URL){
-		URL url;
-		StringBuffer data = new StringBuffer();
-		try {
-			url = new URL(URL);
-			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-			String inputLine;			
-			while ((inputLine = in.readLine()) != null){
-				System.out.println(inputLine);
-				data.append(inputLine);
-			}
-			in.close();
-	} catch (MalformedURLException e) {
-		//TODO Add Logger
-		e.printStackTrace();
-	} catch (IOException e) {
-		//TODO Add Logger
-		e.printStackTrace();
-	}
-	return data.toString();
+		 HttpClient httpclient = new DefaultHttpClient();
+		 String responseBody = "";
+	        try {
+	            HttpGet httpget = new HttpGet(URL);
+	            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+	            responseBody = httpclient.execute(httpget, responseHandler);
+	        } catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+	        	httpclient.getConnectionManager().shutdown();
+	        }
+			return responseBody;
 }
 
 
